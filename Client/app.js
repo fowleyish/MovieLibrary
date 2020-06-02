@@ -1,8 +1,9 @@
 (function($){
     function processForm( e ){
         var dict = {
-        	Title : this["title"].value,
-        	Director: this["director"].value
+        	Title : this["movieTitle"].value,
+            Director: this["movieDirector"].value,
+            Genre: this["movieGenre"].value
         };
 
         $.ajax({
@@ -22,5 +23,5 @@
         e.preventDefault();
     }
 
-    $('#my-form').submit( processForm );
+    $('#moviesForm').submit( processForm );
 })(jQuery);
