@@ -1,0 +1,93 @@
+* {
+    font-family: roboto, arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url(Assets/bg.jpg);
+    align-items: center;
+    height: 30vw;
+}
+
+#mainContainer {
+    width: 40%;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.formSection {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1vw;
+}
+
+label {
+    color: #016575;
+    margin-bottom: 0.5vw;
+    font-weight: bolder;
+}
+
+#siteTitle {
+    margin-bottom: 0;
+    margin-top: 1vw;
+    color: #016575;
+}
+
+hr {
+    margin-bottom: 2vw;
+    color: #0A6778;
+}
+
+input:focus {
+    border: 2px solid #0ccc90;
+    border-radius: 4px;
+}
+
+input {
+    border-radius: 4px;
+}
+
+#submitButtonsSection {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-top: 2vw;
+}
+
+input[type="submit"] {
+    background-color: #00BF89;
+}
+
+#submitGetAll {
+    background-color: #00BF89;
+    border-radius: 4px;
+}
+
+input[type="submit"], #submitGetAll {
+    height: 30px;
+    color: white;
+    font-weight: bolder;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, #submitGetAll:hover {
+    background-color: #048F78;
+    transition-duration: 0.4s;
+}
+
+@media only screen and (max-width: 700px) {
+    #mainContainer {
+        width: 90%;
+    }
+    body {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #mainContainer {
+        width: 99%;
+    }
+}

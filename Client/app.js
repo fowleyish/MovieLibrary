@@ -1,5 +1,5 @@
 (function($){
-    function processForm( e ){
+    function processFormPost( e ){
         var dict = {
         	Title : this["movieTitle"].value,
             Director: this["movieDirector"].value,
@@ -23,5 +23,23 @@
         e.preventDefault();
     }
 
-    $('#moviesForm').submit( processForm );
+    function getAllValues( e ){
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json',
+            type: 'get',
+            contentType: 'application/json',
+            success: function( data ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+    }
+
+    $('#moviesForm').submit( processFormPost );
+    $('#submitGetAll').click( getAllValues );
 })(jQuery);
