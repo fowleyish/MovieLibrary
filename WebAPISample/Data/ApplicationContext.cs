@@ -5,6 +5,8 @@ namespace WebAPISample.Data
 {
     public class ApplicationContext : DbContext
     {
+        public DbSet<Movie> Movies { get; set; }
+
         public ApplicationContext(DbContextOptions options)
             :base(options)
         {
@@ -24,7 +26,5 @@ namespace WebAPISample.Data
                  new Movie { MovieId = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" }
               );
         }
-
-        public DbSet<Movie> Movies { get; set; }
     }
 }
