@@ -34,7 +34,7 @@ namespace WebAPISample.Controllers
         public IActionResult Get(int id)
         {
             // Retrieve movie by id from db logic
-            var movie = _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            var movie = _context.Movies.FirstOrDefault(m => m.MovieId == id);
             if (movie == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace WebAPISample.Controllers
         {
             // Create movie in db logic
             _context.Add(value);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             return Ok();
         }
 
@@ -61,7 +61,7 @@ namespace WebAPISample.Controllers
             {
                 // Update movie in db logic
                 _context.Update(movie);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -84,7 +84,7 @@ namespace WebAPISample.Controllers
             // Delete movie from db logic
             var movie = _context.Movies.Find(id);
             _context.Movies.Remove(movie);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             return Ok();
         }
 
