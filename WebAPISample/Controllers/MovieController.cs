@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPISample.Data;
 using WebAPISample.Models;
 
@@ -14,10 +15,12 @@ namespace WebAPISample.Controllers
     public class MovieController : ControllerBase
     {
         private ApplicationContext _context;
+
         public MovieController(ApplicationContext context)
         {
             _context = context;
         }
+
         // GET api/movie
         [HttpGet]
         public IActionResult Get()
@@ -31,11 +34,12 @@ namespace WebAPISample.Controllers
         public IActionResult Get(int id)
         {
             // Retrieve movie by id from db logic
-            var movie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            var movie = _context.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
             if (movie == null)
+            {
                 return NotFound();
+            }
 
-            // return Ok(movie);
             return Ok(movie);
         }
 
@@ -44,6 +48,8 @@ namespace WebAPISample.Controllers
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
+            _context.Add(value);
+            _context.SaveChangesAsync();
             return Ok();
         }
 
@@ -51,7 +57,23 @@ namespace WebAPISample.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] Movie movie)
         {
-            // Update movie in db logic
+            try
+            {
+                // Update movie in db logic
+                _context.Update(movie);
+                _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MovieExists(movie.MovieId))
+                {
+                    return NotFound();
+                }
+                else 
+                {
+                    throw;
+                }
+            }
             return Ok();
         }
 
@@ -60,7 +82,15 @@ namespace WebAPISample.Controllers
         public IActionResult Delete(int id)
         {
             // Delete movie from db logic
+            var movie = _context.Movies.Find(id);
+            _context.Movies.Remove(movie);
+            _context.SaveChangesAsync();
             return Ok();
+        }
+
+        private bool MovieExists(int id)
+        {
+            return _context.Movies.Any(m => m.MovieId == id);
         }
     }
 }
