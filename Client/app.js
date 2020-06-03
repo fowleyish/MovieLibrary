@@ -56,11 +56,8 @@
         getAllValues();
     }
 
-    $('#response pre').on('click', '.updateBtn', this.value, function updateMovie(id, title, genre, director) {
-        $('#editForm').html('');
-        $('#editForm').html(`<h3>Update ${title}</h3><form id="editFormFields"><section id="movieTitleSectionEdit" class="formSection"> <label for="movieTitleInputEdit">Title</label> <input type="text" name="movieTitleEdit" id="movieTitleInputEdit" value="${title}" placeholder="Enter a movie title"/> </section> <section id="movieGenreSectionEdit" class="formSection"> <label for="movieGenreInputEdit">Genre</label> <input type="text" name="movieGenreEdit" id="movieGenreInputEdit" value="${genre}" placeholder="Enter a genre"/> </section> <section id="movieDirectorSectionEdit" class="formSection"> <label for="movieDirectorInputEdit">Director</label> <input type="text" name="movieDirectorEdit" id="movieDirectorInputEdit" value="${director}" placeholder="Enter a director's name"/> </section> <section id="submitButtonsSectionEdit" class="formSection"> <input type="submit" id="submitEdit" value="Update"/> </section></form>`)
-    });
-    
+    $('#response pre').on('click', '.deleteBtn', this.value, deleteMovie);
+   // $('.deleteBtn').click(console.log(this.value));
     $('#moviesForm').submit( processFormPost );
     $('#submitGetAll').click( getAllValues );
 })(jQuery);
