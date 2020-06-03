@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "b9e4d6a5-c06f-4178-89f7-5176bd685415",
+		"name": "Movies",
+		"description": "Collection of requests made to the movies controller.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44325/api/movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44325/api/movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44325",
+					"path": [
+						"api",
+						"movie"
+					]
+				},
+				"description": "Do a get() of all movies."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44325/api/movie/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44325/api/movie/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44325",
+					"path": [
+						"api",
+						"movie",
+						"1"
+					]
+				},
+				"description": "Get(Id) single item from server.  Set number in request url to MovieId desired."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44325/api/movie",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\" : \"Rambo\",\n    \"Genre\" : \"Action\",\n    \"Director\" : \"Sylvester Stallone\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44325/api/movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44325",
+					"path": [
+						"api",
+						"movie"
+					]
+				},
+				"description": "Post() call.  Replace values in body/raw JSON with values for new node.  Do not include MovieId."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44325/api/movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"MovieId\": 6,\n    \"Title\" : \"Rambo\",\n    \"Genre\" : \"Horror\",\n    \"Director\" : \"Sylvester Stallone\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44325/api/movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44325",
+					"path": [
+						"api",
+						"movie"
+					]
+				},
+				"description": "Put()/update method.  Put new values in body/raw JSON.  Use Get() to get the correct MovieId value."
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44325/api/movie/6",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44325/api/movie/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44325",
+					"path": [
+						"api",
+						"movie",
+						"6"
+					]
+				},
+				"description": "Delete() method.  Replace movieId in URL.  Use Get() to get the correct movieId."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
