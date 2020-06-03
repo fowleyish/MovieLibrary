@@ -7,7 +7,6 @@ body {
     justify-content: center;
     background-image: url(Assets/bg.jpg);
     align-items: center;
-    height: 30vw;
 }
 
 #mainContainer {
@@ -55,16 +54,16 @@ input {
     margin-top: 2vw;
 }
 
-input[type="submit"] {
+input[type="submit"], td button {
     background-color: #00BF89;
 }
 
-#submitGetAll {
+#submitGetAll, td button {
     background-color: #00BF89;
     border-radius: 4px;
 }
 
-input[type="submit"], #submitGetAll {
+input[type="submit"], #submitGetAll, td button {
     height: 30px;
     color: white;
     font-weight: bolder;
@@ -72,9 +71,25 @@ input[type="submit"], #submitGetAll {
     cursor: pointer;
 }
 
-input[type="submit"]:hover, #submitGetAll:hover {
+input[type="submit"]:hover, #submitGetAll:hover, .updateBtn:hover {
     background-color: #048F78;
     transition-duration: 0.4s;
+}
+
+#returnTable {
+    width: 100%;
+}
+
+#headingRow {
+    text-align: left;
+}
+
+#returnTable tr {
+    height: 2vw;
+}
+
+.deleteBtn:hover {
+    background-color: red;
 }
 
 @media only screen and (max-width: 700px) {

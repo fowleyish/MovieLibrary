@@ -24,13 +24,17 @@
     }
 
     function getAllValues( e ){
+        $('#response pre').html('');
         $.ajax({
             url: 'https://localhost:44325/api/movie',
             dataType: 'json',
             type: 'get',
             contentType: 'application/json',
             success: function( data ){
-                $('#response pre').html( data );
+                $('#response pre').html('<hr /><table id="returnTable"><tr id="headingRow"><th>Title</th><th>Genre</th><th>Director</th><th></th><th></th></table>');
+                $.each(data, function( index ) {
+                    $('#returnTable').append( `<tr><td>${data[index].title}</td><td>${data[index].genre}</td><td>${data[index].director}</td><td><button class="updateBtn" onclick="invokeUpdateForm(${data[index].movieId})">Update</button></td><td><button class="deleteBtn" onclick="deleteMovie(${data[index].movieId})">Delete</button></td></tr>` );
+                })
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
