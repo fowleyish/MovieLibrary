@@ -44,6 +44,16 @@
         e.preventDefault();
     }
 
+    const deleteMovie = ( id ) => {
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json',
+            type: 'delete',
+            contentType: 'application/json',
+            data: id
+        });
+    }
+
     $('#moviesForm').submit( processFormPost );
     $('#submitGetAll').click( getAllValues );
 })(jQuery);
