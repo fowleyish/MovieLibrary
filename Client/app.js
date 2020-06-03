@@ -55,7 +55,8 @@
         });
     }
 
-    $('.deleteBtn').click(console.log(this.value));
+    $('#response pre').on('click', '.deleteBtn', this.value, deleteMovie);
+   // $('.deleteBtn').click(console.log(this.value));
     $('#moviesForm').submit( processFormPost );
     $('#submitGetAll').click( getAllValues );
 })(jQuery);
