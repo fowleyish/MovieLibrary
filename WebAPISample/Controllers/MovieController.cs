@@ -74,7 +74,7 @@ namespace WebAPISample.Controllers
                     throw;
                 }
             }
-            return Ok();
+            return Ok(_context.Movies);
         }
 
         // DELETE api/movie/5
