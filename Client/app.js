@@ -46,9 +46,9 @@
         e.preventDefault();
     }
 
-    function deleteMovie(id) {
+    function deleteMovie( ) {
         $.ajax({
-            url: 'https://localhost:44325/api/movie/' + id,
+            url: 'https://localhost:44325/api/movie/' + this.value,
             dataType: 'json',
             type: 'delete',
             contentType: 'application/json'
@@ -112,6 +112,7 @@
 
     // $('#response pre').on('click', '.deleteBtn', deleteMovie(this.value));
     // $('.deleteBtn').click(console.log(this.value));
+    //
     $('#moviesForm').submit( processFormPost );
     $('#submitGetAll').click( getAllValues );
 })(jQuery);
