@@ -65,7 +65,7 @@
         };
 
         $('#editForm').html('');
-        $('#editForm').html(`<h3>Update ${dict.Title}</h3><form id="editFormFields"><section id="movieTitleSectionEdit" class="formSection"> <label for="movieTitleInputEdit">Title</label> <input type="text" name="movieTitleEdit" id="movieTitleInputEdit" value="${dict.Title}" placeholder="Enter a movie title"/> </section> <section id="movieGenreSectionEdit" class="formSection"> <label for="movieGenreInputEdit">Genre</label> <input type="text" name="movieGenreEdit" id="movieGenreInputEdit" value="${dict.Genre}" placeholder="Enter a genre"/> </section> <section id="movieDirectorSectionEdit" class="formSection"> <label for="movieDirectorInputEdit">Director</label> <input type="text" name="movieDirectorEdit" id="movieDirectorInputEdit" value="${dict.Director}" placeholder="Enter a director's name"/> </section> <section id="submitButtonsSectionEdit" class="formSection"> <input type="submit" id="submitEdit" value="Update"/> </section></form>`)
+        $('#editForm').html(`<h3>Update ${dict.Title}</h3><form id="editFormFields"><section id="movieTitleSectionEdit" class="formSection"> <label for="movieTitleInputEdit">Title</label> <input type="text" name="movieTitleEdit" id="movieTitleInputEdit" value="${dict.Title}" placeholder="Enter a movie title"/> </section> <section id="movieGenreSectionEdit" class="formSection"> <label for="movieGenreInputEdit">Genre</label> <input type="text" name="movieGenreEdit" id="movieGenreInputEdit" value="${dict.Genre}" placeholder="Enter a genre"/> </section> <section id="movieDirectorSectionEdit" class="formSection"> <label for="movieDirectorInputEdit">Director</label> <input type="text" name="movieDirectorEdit" id="movieDirectorInputEdit" value="${dict.Director}" placeholder="Enter a director's name"/> </section> <section id="submitButtonsSectionEdit" class="formSection"> <input type="hidden" value="${dict.Id}" id="hiddenEditId" /><input type="submit" id="submitEdit" value="Update"/> </section></form>`)
     }
 
     $('#response pre').on('click', '.updateBtn', this.value, function getSingleMovieForUpdate( e ) {
@@ -81,13 +81,12 @@
     });
 
 
-    // Not working completely; need to find a way to include the ID of the movie so that we can supply that to the controller
     $('#editForm').on('click', '#submitEdit', function updateMoviePut( e ) {
         var dict = {
         	Title : $('#movieTitleInputEdit').val(),
             Director: $('#movieDirectorInputEdit').val(),
             Genre: $('#movieGenreInputEdit').val(),
-            Id: this.movieId
+            MovieId: parseInt($('#hiddenEditId').val(), 10)
         };
 
         if (dict.Title != '') {
@@ -99,6 +98,7 @@
                 data: JSON.stringify(dict),
                 success: function( data ){
                     $('#editForm').html('');
+                    getAllValues();
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
