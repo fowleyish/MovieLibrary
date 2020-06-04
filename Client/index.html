@@ -9,7 +9,7 @@
 
 <main id="mainContainer">
     <header>
-        <h1 id="siteTitle">Movies</h1>
+        <h1 id="siteTitle">Movies Library</h1>
         <hr />
     </header>
     <form id="moviesForm">
@@ -24,6 +24,10 @@
         <section id="movieDirectorSection" class="formSection">
             <label for="movieDirectorInput">Director</label>
             <input type="text" name="movieDirector" id="movieDirectorInput" placeholder="Enter a director's name" />
+        </section>
+        <section id="moviePosterSection" class="formSection">
+            <label for="moviePosterInput">Movie Promo Poster</label>
+            <input type="text" name="moviePoster" id="moviePosterInput" placeholder="Enter the filename to the movie poster (NOTE: this must be upload to Client/Images in the solution directory to load)" />
         </section>
         <section id="submitButtonsSection" class="formSection">
             <input type="submit" id="submitPost" value="Create" />
