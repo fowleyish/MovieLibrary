@@ -50,7 +50,7 @@ namespace WebAPISample.Controllers
             // Create movie in db logic
             _context.Add(value);
             _context.SaveChanges();
-            return Ok();
+            return Ok(value);
         }
 
         // PUT api/movie
@@ -85,7 +85,7 @@ namespace WebAPISample.Controllers
             var movie = _context.Movies.Find(id);
             _context.Movies.Remove(movie);
             _context.SaveChanges();
-            return Ok();
+            return Ok(movie);
         }
 
         private bool MovieExists(int id)

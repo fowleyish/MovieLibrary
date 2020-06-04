@@ -13,8 +13,8 @@
                 type: 'post',
                 contentType: 'application/json',
                 data: JSON.stringify(dict),
-                success: function( data, textStatus, jQxhr ){
-                    $('#response pre').append( data );
+                success: function( ){
+                    getAllValues(e);
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
@@ -51,9 +51,16 @@
             url: 'https://localhost:44325/api/movie/' + this.value,
             dataType: 'json',
             type: 'delete',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            success: function ( data ){
+                getAllValues(e);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
         });
-        getAllValues( e );
+        
+        e.preventDefault();
     }
 
     function updateMovie(data) {
@@ -74,7 +81,7 @@
             dataType: 'json',
             type: 'get',
             contentType: 'application/json',
-            success: function(data) {
+            success: function( data ) {
                 updateMovie(data);
             }
         })
@@ -96,9 +103,9 @@
                 type: 'put',
                 contentType: 'application/json',
                 data: JSON.stringify(dict),
-                success: function( data ){
+                success: function( ){
                     $('#editForm').html('');
-                    getAllValues();
+                    getAllValues(e);
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
