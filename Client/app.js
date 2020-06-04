@@ -46,14 +46,14 @@
         e.preventDefault();
     }
 
-    function deleteMovie( ) {
+    function deleteMovie( e ) {
         $.ajax({
             url: 'https://localhost:44325/api/movie/' + this.value,
             dataType: 'json',
             type: 'delete',
             contentType: 'application/json'
         });
-        getAllValues();
+        getAllValues( e );
     }
 
     function updateMovie(data) {
