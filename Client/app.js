@@ -14,7 +14,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify(dict),
                 success: function( data, textStatus, jQxhr ){
-                    $('#response pre').html( data );
+                    $('#response pre').append( data );
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
@@ -92,7 +92,7 @@
 
         if (dict.Title != '') {
             $.ajax({
-                url: 'https://localhost:44325/api/movie/' + id,
+                url: 'https://localhost:44325/api/movie/',
                 dataType: 'json',
                 type: 'put',
                 contentType: 'application/json',
@@ -110,9 +110,7 @@
     });
 
 
-    // $('#response pre').on('click', '.deleteBtn', deleteMovie(this.value));
-    // $('.deleteBtn').click(console.log(this.value));
-    //
+    $('#response pre').on('click', '.deleteBtn', deleteMovie);
     $('#moviesForm').submit( processFormPost );
     $('#submitGetAll').click( getAllValues );
 })(jQuery);
